@@ -10,24 +10,24 @@ export const Home = () => {
     { id: 4, name: "women's clothing" },
   ];
 
-  const featuredCategories = [
-    { id: 1, name: "Shoes" },
-    { id: 2, name: "Sport" },
-    { id: 3, name: "Socks" },
-    { id: 4, name: "Caps" },
-  ];
+  // const featuredCategories = [
+  //   { id: 1, name: "Shoes" },
+  //   { id: 2, name: "Sport" },
+  //   { id: 3, name: "Child" },
+  //   { id: 4, name: "Caps" },
+  // ];
 
   return (
     <div className="home">
       <div>
         <CategoryList categories={categories} title="All Categories" />
       </div>
-      <div>
+      {/* <div>
         <CategoryList
           categories={featuredCategories}
           title="Featured Categories"
         />
-      </div>
+      </div> */}
     </div>
   );
 };

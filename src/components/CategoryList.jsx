@@ -1,13 +1,13 @@
 import React from "react";
 
-export const CategoryList = (props) => {
-  console.log(props.categories);
-  console.log(props.title);
+export const CategoryList = ({ categories, title }) => {
+  console.log(categories);
+  console.log(title);
   return (
     <>
-      <h1>{props.title}</h1>
+      <h1 className="category-title">{title}</h1>
       <div className="categories-row">
-        {props.categories.map((item) => (
+        {categories.map((item) => (
           <div className="category" key={item.id}>
             <p>{item.name}</p>
           </div>
