@@ -1,36 +1,33 @@
 import React from "react";
 import { useState } from "react";
+import { CategoryList } from "./CategoryList";
 
 export const Home = () => {
-  const [name, setName] = useState("sameera");
+  const categories = [
+    { id: 1, name: "electronics" },
+    { id: 2, name: "jewelery" },
+    { id: 3, name: "men's clothing" },
+    { id: 4, name: "women's clothing" },
+  ];
 
-  const [age, setage] = useState(20);
-
-  const handleClick = () => {
-    setName("Wagaarachchige");
-    setage(30);
-    console.log(name);
-  };
-
-  // const handleClickAgain = (name, e) => {
-  //   console.log("My name is " + name);
-  //   console.log(e.target);
-  // };
+  const featuredCategories = [
+    { id: 1, name: "Shoes" },
+    { id: 2, name: "Sport" },
+    { id: 3, name: "Socks" },
+    { id: 4, name: "Caps" },
+  ];
 
   return (
     <div className="home">
-      <h1>Our Home Page</h1>
-      <button onClick={handleClick}>Click Me</button>
-      {/* <button
-        onClick={(event) => {
-          event.preventDefault();
-          handleClickAgain("Sameera", event);
-        }}
-      >
-        Click Me again
-      </button> */}
-      <p>My Name is {name}</p>
-      <p>My age is {age}</p>
+      <div>
+        <CategoryList categories={categories} title="All Categories" />
+      </div>
+      <div>
+        <CategoryList
+          categories={featuredCategories}
+          title="Featured Categories"
+        />
+      </div>
     </div>
   );
 };
