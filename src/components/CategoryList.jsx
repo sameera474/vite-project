@@ -1,6 +1,6 @@
 import React from "react";
 
-export const CategoryList = ({ categories, title }) => {
+export const CategoryList = ({ categories, title, onSelectCategory }) => {
   console.log(categories);
   console.log(title);
   return (
@@ -8,7 +8,11 @@ export const CategoryList = ({ categories, title }) => {
       <h1 className="category-title">{title}</h1>
       <div className="categories-row">
         {categories.map((item) => (
-          <div className="category" key={item.id}>
+          <div
+            className="category"
+            key={item.id}
+            onClick={() => onSelectCategory()}
+          >
             <p>{item.name}</p>
           </div>
         ))}
