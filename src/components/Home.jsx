@@ -20,12 +20,12 @@ export const Home = () => {
     { id: 7, name: "Mango", categoryId: 4 },
     { id: 8, name: "Zara", categoryId: 4 },
   ];
-  const featuredCategories = [
-    { id: 1, name: "Shoes" },
-    { id: 2, name: "Sport" },
-    { id: 3, name: "Child" },
-    { id: 4, name: "Caps" },
-  ];
+  // const featuredCategories = [
+  //   { id: 1, name: "Shoes" },
+  //   { id: 2, name: "Sport" },
+  //   { id: 3, name: "Child" },
+  //   { id: 4, name: "Caps" },
+  // ];
   const onSelectCategory = () => {
     console.log(products);
   };
