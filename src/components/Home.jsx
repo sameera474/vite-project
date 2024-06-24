@@ -26,8 +26,12 @@ export const Home = () => {
   //   { id: 3, name: "Child" },
   //   { id: 4, name: "Caps" },
   // ];
-  const onSelectCategory = () => {
+  const onSelectCategory = (clickedCategoryId) => {
     console.log(products);
+    const filteredProducts = products.filter(
+      (product) => product.categoryId === clickedCategoryId
+    );
+    console.log(filteredProducts);
   };
   return (
     <div className="home">
