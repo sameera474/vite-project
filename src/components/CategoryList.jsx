@@ -11,7 +11,7 @@ export const CategoryList = ({ categories, title, onSelectCategory }) => {
           <div
             className="category"
             key={item.id}
-            onClick={() => onSelectCategory()}
+            onClick={() => onSelectCategory(item.id)}
           >
             <p>{item.name}</p>
           </div>

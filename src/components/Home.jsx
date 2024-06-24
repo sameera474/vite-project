@@ -26,13 +26,20 @@ export const Home = () => {
   //   { id: 3, name: "Child" },
   //   { id: 4, name: "Caps" },
   // ];
+
+  const [selectedProducts, setSelectedProducts] = useState([]);
+
   const onSelectCategory = (clickedCategoryId) => {
-    console.log(products);
+    // console.log(products);
     const filteredProducts = products.filter(
       (product) => product.categoryId === clickedCategoryId
     );
-    console.log(filteredProducts);
+    // console.log(filteredProducts);
+    setSelectedProducts(filteredProducts);
   };
+
+  // console.log(selectedProducts);
+
   return (
     <div className="home">
       <div>
@@ -41,6 +48,9 @@ export const Home = () => {
           title="All Categories"
           onSelectCategory={onSelectCategory}
         />
+        {selectedProducts.map((product) => (
+          <div key={product.id}>{product.name}</div>
+        ))}
       </div>
       {/* <div>
         <CategoryList
