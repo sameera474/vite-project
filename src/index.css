@@ -75,3 +75,22 @@
   border-radius: 4px;
   background-color: #fff;
 }
+
+.product-box img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.product-box h3 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.product-box p {
+  font-size: 0.9rem;
+  text-align: center;
+  margin: 5px 0;
+  font-size: 10px;
+}

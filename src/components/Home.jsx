@@ -27,8 +27,9 @@ export const Home = () => {
   //   { id: 4, name: "Caps" },
   // ];
 
-  const [selectedProducts, setSelectedProducts] = useState([]);
-  const [selectedCategoryName, setSelectedCategoryName] = useState();
+  const [selectedCategoryName, setSelectedCategoryName] =
+    useState("electronics");
+  const [categorisedProducts, setcategorisedProducts] = useState([]);
 
   const onSelectCategory = (clickedCategoryName) => {
     // console.log(products);
@@ -50,7 +51,8 @@ export const Home = () => {
         const response = await fetch(url);
         if (response.ok) {
           const product = await response.json();
-          console.log(product);
+          setcategorisedProducts(product);
+          // console.log(product);
           // setSelectedProducts(product);
         } else {
           throw new Error("Can't fetch product");
@@ -73,9 +75,18 @@ export const Home = () => {
           onSelectCategory={onSelectCategory}
         />
         <div className="products-container">
-          {selectedProducts.map((product) => (
+          {categorisedProducts.map((product) => (
             <div key={product.id} className="product-box">
-              {product.name}
+              <img src={product.image} alt={product.title} />
+              <h3>{product.title}</h3>
+              <p>{product.description}</p>
+              <p>{product.category}</p>
+              <p className="price">Price: {product.price}</p>
+              <p>
+                {product.rating.rate}({product.rating.count} reviews)
+              </p>
+              <button>See Details</button>
+              {/* {product.title} */}
             </div>
           ))}
         </div>
