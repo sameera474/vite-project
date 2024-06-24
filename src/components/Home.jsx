@@ -48,9 +48,13 @@ export const Home = () => {
           title="All Categories"
           onSelectCategory={onSelectCategory}
         />
-        {selectedProducts.map((product) => (
-          <div key={product.id}>{product.name}</div>
-        ))}
+        <div className="products-container">
+          {selectedProducts.map((product) => (
+            <div key={product.id} className="product-box">
+              {product.name}
+            </div>
+          ))}
+        </div>
       </div>
       {/* <div>
         <CategoryList
