@@ -10,16 +10,16 @@ export const Home = () => {
     { id: 4, name: "women's clothing" },
   ];
 
-  const products = [
-    { id: 1, name: "Iphone 15 Pro Max", categoryId: 1 },
-    { id: 2, name: "Lenovo Laptop", categoryId: 1 },
-    { id: 3, name: "White Gold", categoryId: 2 },
-    { id: 4, name: "Bracelet", categoryId: 2 },
-    { id: 5, name: "Nike", categoryId: 3 },
-    { id: 6, name: "Addidas", categoryId: 3 },
-    { id: 7, name: "Mango", categoryId: 4 },
-    { id: 8, name: "Zara", categoryId: 4 },
-  ];
+  // const products = [
+  //   { id: 1, name: "Iphone 15 Pro Max", categoryId: 1 },
+  //   { id: 2, name: "Lenovo Laptop", categoryId: 1 },
+  //   { id: 3, name: "White Gold", categoryId: 2 },
+  //   { id: 4, name: "Bracelet", categoryId: 2 },
+  //   { id: 5, name: "Nike", categoryId: 3 },
+  //   { id: 6, name: "Addidas", categoryId: 3 },
+  //   { id: 7, name: "Mango", categoryId: 4 },
+  //   { id: 8, name: "Zara", categoryId: 4 },
+  // ];
   // const featuredCategories = [
   //   { id: 1, name: "Shoes" },
   //   { id: 2, name: "Sport" },
@@ -28,19 +28,39 @@ export const Home = () => {
   // ];
 
   const [selectedProducts, setSelectedProducts] = useState([]);
+  const [selectedCategoryName, setSelectedCategoryName] = useState();
 
-  const onSelectCategory = (clickedCategoryId) => {
+  const onSelectCategory = (clickedCategoryName) => {
     // console.log(products);
-    const filteredProducts = products.filter(
-      (product) => product.categoryId === clickedCategoryId
-    );
+    // const filteredProducts = products.filter(
+    //   (product) => product.categoryId === clickedCategoryId
+    // );
     // console.log(filteredProducts);
-    setSelectedProducts(filteredProducts);
+    // console.log(clickedCategoryName);
+    // setSelectedProducts(filteredProducts);
+
+    setSelectedCategoryName(clickedCategoryName);
   };
 
   useEffect(() => {
-    console.log("Use effect");
-  });
+    // console.log(selectedCategoryName);
+    const fetchProduct = async () => {
+      try {
+        const url = `https://fakestoreapi.com/products/category/${selectedCategoryName}`;
+        const response = await fetch(url);
+        if (response.ok) {
+          const product = await response.json();
+          console.log(product);
+          // setSelectedProducts(product);
+        } else {
+          throw new Error("Can't fetch product");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchProduct();
+  }, [selectedCategoryName]);
 
   // console.log(selectedProducts);
 
