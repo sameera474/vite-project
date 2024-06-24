@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CategoryList } from "./CategoryList";
 
 export const Home = () => {
@@ -37,6 +37,10 @@ export const Home = () => {
     // console.log(filteredProducts);
     setSelectedProducts(filteredProducts);
   };
+
+  useEffect(() => {
+    console.log("Use effect");
+  });
 
   // console.log(selectedProducts);
 
