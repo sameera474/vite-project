@@ -29,8 +29,6 @@ export const Home = () => {
 
   const [selectedCategoryName, setSelectedCategoryName] =
     useState("electronics");
-  const [categorisedProducts, setcategorisedProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
   const onSelectCategory = (clickedCategoryName) => {
     // console.log(products);
@@ -45,32 +43,11 @@ export const Home = () => {
     setIsLoading(true);
   };
 
-  useEffect(() => {
-    // console.log(selectedCategoryName);
-    const fetchProduct = async () => {
-      try {
-        const url = `https://fakestoreapi.com/products/category/${selectedCategoryName}`;
-        const response = await fetch(url);
-        if (response.ok) {
-          const product = await response.json();
-          setcategorisedProducts(product);
-          setIsLoading(false);
-          // console.log(product);
-          // setSelectedProducts(product);
-        } else {
-          throw new Error("Can't fetch product");
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchProduct();
-  }, [selectedCategoryName]);
-
   // console.log(selectedProducts);
 
   return (
     <div className="home">
+      {error && <div> {error} </div>}
       <div>
         <CategoryList
           categories={categories}
