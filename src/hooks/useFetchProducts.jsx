@@ -6,6 +6,7 @@ export const useFetchProducts = (selectedCategoryName) => {
   const [error, setError] = useState();
 
   useEffect(() => {
+    setIsLoading(true);
     // console.log(selectedCategoryName);
     const fetchProduct = async () => {
       try {
@@ -29,4 +30,6 @@ export const useFetchProducts = (selectedCategoryName) => {
     };
     fetchProduct();
   }, [selectedCategoryName]);
+
+  return [categorisedProducts, isLoading, error];
 };

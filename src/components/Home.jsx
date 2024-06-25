@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { CategoryList } from "./CategoryList";
+import { useFetchProducts } from "../hooks/useFetchProducts";
 
 export const Home = () => {
   const categories = [
@@ -30,6 +31,9 @@ export const Home = () => {
   const [selectedCategoryName, setSelectedCategoryName] =
     useState("electronics");
 
+  const [categorisedProducts, isLoading, error] =
+    useFetchProducts(selectedCategoryName);
+
   const onSelectCategory = (clickedCategoryName) => {
     // console.log(products);
     // const filteredProducts = products.filter(
@@ -40,7 +44,7 @@ export const Home = () => {
     // setSelectedProducts(filteredProducts);
 
     setSelectedCategoryName(clickedCategoryName);
-    setIsLoading(true);
+    //
   };
 
   // console.log(selectedProducts);
