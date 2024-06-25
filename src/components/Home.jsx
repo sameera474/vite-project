@@ -30,6 +30,7 @@ export const Home = () => {
   const [selectedCategoryName, setSelectedCategoryName] =
     useState("electronics");
   const [categorisedProducts, setcategorisedProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSelectCategory = (clickedCategoryName) => {
     // console.log(products);
@@ -41,6 +42,7 @@ export const Home = () => {
     // setSelectedProducts(filteredProducts);
 
     setSelectedCategoryName(clickedCategoryName);
+    setIsLoading(true);
   };
 
   useEffect(() => {
@@ -52,6 +54,7 @@ export const Home = () => {
         if (response.ok) {
           const product = await response.json();
           setcategorisedProducts(product);
+          setIsLoading(false);
           // console.log(product);
           // setSelectedProducts(product);
         } else {
@@ -75,20 +78,24 @@ export const Home = () => {
           onSelectCategory={onSelectCategory}
         />
         <div className="products-container">
-          {categorisedProducts.map((product) => (
-            <div key={product.id} className="product-box">
-              <img src={product.image} alt={product.title} />
-              <h3>{product.title}</h3>
-              <p>{product.description}</p>
-              <p>{product.category}</p>
-              <p className="price">Price: {product.price}</p>
-              <p>
-                {product.rating.rate}({product.rating.count} reviews)
-              </p>
-              <button>See Details</button>
-              {/* {product.title} */}
-            </div>
-          ))}
+          {isLoading ? (
+            <div className="loader"></div>
+          ) : (
+            categorisedProducts.map((product) => (
+              <div key={product.id} className="product-box">
+                <img src={product.image} alt={product.title} />
+                <h3>{product.title}</h3>
+                <p>{product.description}</p>
+                <p>{product.category}</p>
+                <p className="price">Price: {product.price}</p>
+                <p>
+                  {product.rating.rate}({product.rating.count} reviews)
+                </p>
+                <button>See Details</button>
+                {/* {product.title} */}
+              </div>
+            ))
+          )}
         </div>
       </div>
       {/* <div>

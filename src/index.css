@@ -94,3 +94,36 @@
   margin: 5px 0;
   font-size: 10px;
 }
+
+button {
+  background-color: #f1356d;
+  color: white;
+  padding: 10px 20 px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.loader {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #f1356d;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  animation: spin 2s linear infinite;
+  margin: 40px auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
