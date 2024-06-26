@@ -50,7 +50,7 @@ export const Home = () => {
   // console.log(selectedProducts);
 
   return (
-    <div className="home">
+    <div className="home content">
       {error && <div> {error} </div>}
       <div>
         <CategoryList
