@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { CategoryList } from "./CategoryList";
 import { useFetchProducts } from "../hooks/useFetchProducts";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const categories = [
@@ -47,6 +48,8 @@ export const Home = () => {
     //
   };
 
+  const navigate = useNavigate();
+
   // console.log(selectedProducts);
 
   return (
@@ -72,7 +75,9 @@ export const Home = () => {
                 <p>
                   {product.rating.rate}({product.rating.count} reviews)
                 </p>
-                <button>See Details</button>
+                <button onClick={() => navigate(`/products/${product.id}`)}>
+                  See Details
+                </button>
                 {/* {product.title} */}
               </div>
             ))
