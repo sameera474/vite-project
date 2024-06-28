@@ -19,7 +19,6 @@ export const useFetchProducts = (selectedCategoryName) => {
           // console.log(product);
           // setSelectedProducts(product);
         } else {
-          setIsLoading(false);
           throw new Error("Can't fetch products");
         }
       } catch (error) {
